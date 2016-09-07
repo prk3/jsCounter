@@ -1,7 +1,7 @@
-//jCounter v1.0
+//jsCounter v1.0
 //license: MIT 1016, przemekkukulski
 
-jCounter = function() {};
+jsCounter = function() {};
 
 (function() {
 
@@ -208,7 +208,7 @@ jCounter = function() {};
 	
 
 	if (window.jQuery !== undefined) {
-		jQuery.fn.jCounter = function(jsSettings) {
+		jQuery.fn.jsCounter = function(jsSettings) {
 
 			if (this.length > 1) {
 				var settings = sumObjects(globalSettings, jsSettings);
@@ -226,5 +226,5 @@ jCounter = function() {};
 		}
 	}
 
-	jCounter = jsCounterFunction;
+	jsCounter = jsCounterFunction;
 })();

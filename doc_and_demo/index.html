@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>jCounter doc and demo</title>
+		<title>jsCounter doc and demo</title>
 
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 		<script src="jquery/jquery.js"></script>
 		<script src="prism/prism.js"></script>
-		<script src="../jcounter.min.js"></script>
+		<script src="../jscounter.min.js"></script>
 		<script src="js.js"></script>
 	</head>
 
@@ -22,30 +22,30 @@
 		<div class="container">
 			<header id="top-header">
 				<div class="abc"></div>
-				<h1>jCounter</h1>
+				<h1>jsCounter</h1>
 				<h4>Easy to use and powerful plugin for creating counters (of any kind)</h4>
 			</header>
 
 			<section id="basic-usage">
 				<h3>Counter initialization</h3>
 				<p>To use this plugin you just need to include jcounter.min.js or counter.js in your webpage.</p>
-				<div class="code-title">Linking jCounter script</div>
+				<div class="code-title">Linking jsCounter script</div>
 
 <pre><code class="language-html">&lt;script src="../jcounter.min.js"&gt;&lt;script&gt;</code></pre>
 
-				<p>Counters can be initialized in two ways. The first one is the global function "jCounter". It takes as a first argument DOM elements, in which numbers will be put and as a second one javascript object with counter parameters.</p>
-				<div class="code-title">Example usage of jCounter function</div>
+				<p>Counters can be initialized in two ways. The first one is the global function "jsCounter". It takes as a first argument DOM elements, in which numbers will be put and as a second one javascript object with counter parameters.</p>
+				<div class="code-title">Example usage of jsCounter function</div>
 
-<pre><code class="language-js">jCounter(document.getElementsByClassName('counter'), {
+<pre><code class="language-js">jsCounter(document.getElementsByClassName('counter'), {
 	start: 200,
 	end: 400,
 	animation: 'ease-in'
 });</code></pre>
 
-				<p>The second method of counter initialization relies on jQuery and will be available if jQuery was included before jCounter.</p>
+				<p>The second method of counter initialization relies on jQuery and will be available if jQuery was included before jsCounter.</p>
 				<div class="code-title">Same result using jQuery syntax</div>
 
-<pre><code class="language-js">$('.counter').jCounter({
+<pre><code class="language-js">$('.counter').jsCounter({
 	start: 200,
 	end: 400,
 	animation: 'ease-in'
@@ -55,10 +55,10 @@
 			<section id="counter-customization">
 				<h3>Counter customization</h3>
 
-				<p>Counters can be customized by passing object with counter parameters to initialization function. All of the parameters can be also set using data-attributes in html element. Data-attributes have higher priority than parameters in jCounter settings object. Below examples will have the same result.</p>
+				<p>Counters can be customized by passing object with counter parameters to initialization function. All of the parameters can be also set using data-attributes in html element. Data-attributes have higher priority than parameters in jsCounter settings object. Below examples will have the same result.</p>
 				<div class="code-title">1</div>
 <pre><code class="language-html">&lt;div class="counter"&gt;&lt;/div&gt;</code></pre>
-<pre><code class="language-js">$('.counter').jCounter({
+<pre><code class="language-js">$('.counter').jsCounter({
 	start: 200,
 	end: 400,
 	animation: 'ease-in'
@@ -66,7 +66,7 @@
 				
 				<div class="code-title">2</div>
 <pre><code class="language-html">&lt;div class="counter" data-start="200" data-end="400" data-animation="ease-in"&gt;&lt;/div&gt;</code></pre>
-<pre><code class="language-js">$('.counter').jCounter();</code></pre>
+<pre><code class="language-js">$('.counter').jsCounter();</code></pre>
 
 				<p class="warning">Write data-attribute names in lowercase. For example:<br>updatesPerSec: 10 -> data-updatespersec="10"</p>
 				<p class="warning">You can not pass functions in data-attributes.</p>
@@ -280,17 +280,17 @@
 
 								<div class="example">
 									<div class="code">
-										<p>Slippery ease-in-out</p>
+										<p>Smooth ease-in-out</p>
 <pre><code class="language-js">var config = {
 	duration: 4000,
 
 	animation: 'ease-in-out',
-	animationPower: 4
+	animationPower: 3
 };</code></pre>
 									</div>
 
 									<div class="preview">
-										<div class="counter js-less initialize" data-duration="4000" data-animation="ease-in-out" data-animationpower="4"></div>
+										<div class="counter js-less initialize" data-duration="4000" data-animation="ease-in-out" data-animationpower="3"></div>
 										<div class="start-counter">Start</div>
 									</div>
 								</div>
@@ -664,7 +664,7 @@
 				<h3>Counter HTML elements</h3>
 
 				<p>Each element of a counter (digit, separator) is enclosed in separate HTML element.</p>
-				<span class="code-title">Example counter element with jCounter</span>
+				<span class="code-title">Example counter element with jsCounter</span>
 
 <pre><code class="language-html">&lt;div class="counter"&gt;
 	&lt;span class="jc-pp3"&gt;9&lt;/span&gt;
@@ -735,7 +735,7 @@
 			<section id="ending-info">
 				<h3>Some final words</h3>
 
-				<p>jCounter as well as this page is released under the <a href="https://en.wikipedia.org/wiki/MIT_License"><span class="bold">MIT</span></a> license.<br>I hope you will find this demo/documentation useful and enjoy using jCounter.</p>
+				<p>jsCounter as well as this page is released under the <a href="https://en.wikipedia.org/wiki/MIT_License"><span class="bold">MIT</span></a> license.<br>I hope you will find this demo/documentation useful and enjoy using jsCounter.</p>
 
 				<p>These are the tools which I have used for creating this webpage.</p>
 

@@ -22,7 +22,7 @@ $(document).ready(function() {
 		}
 	];
 
-	$('.counter.initialize').jCounter({initializeOnly: true});
+	$('.counter.initialize').jsCounter({initializeOnly: true});
 
 	$('.examples-button').on('click', function() {
 		if ($(this).hasClass('clicked')) {
@@ -36,9 +36,9 @@ $(document).ready(function() {
 		var counter = $(this).siblings('.counter');
 
 		if (counter.hasClass('js-needed')) {
-			counter.jCounter( jsNeededConfig[Number( counter.data('nr') )] );
+			counter.jsCounter( jsNeededConfig[Number( counter.data('nr') )] );
 		} else {
-			counter.jCounter();
+			counter.jsCounter();
 		}
 	});
 });
