@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jCounter doc and demo</title>
+
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+
+		<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="prism/prism.css" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
+
+		<script src="jquery/jquery.js"></script>
+		<script src="prism/prism.js"></script>
+		<script src="../jcounter.min.js"></script>
+		<script src="js.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<header id="top-header">
+				<div class="abc"></div>
+				<h1>jCounter</h1>
+				<h4>Easy to use and powerful plugin for creating counters (of any kind)</h4>
+			</header>
+
+			<section id="basic-usage">
+				<h3>Counter initialization</h3>
+				<p>To use this plugin you just need to include jcounter.min.js or counter.js in your webpage.</p>
+				<div class="code-title">Linking jCounter script</div>
+
+<pre><code class="language-html">&lt;script src="../jcounter.min.js"&gt;&lt;script&gt;</code></pre>
+
+				<p>Counters can be initialized in two ways. The first one is the global function "jCounter". It takes as a first argument DOM elements, in which numbers will be put and as a second one javascript object with counter parameters.</p>
+				<div class="code-title">Example usage of jCounter function</div>
+
+<pre><code class="language-js">jCounter(document.getElementsByClassName('counter'), {
+	start: 200,
+	end: 400,
+	animation: 'ease-in'
+});</code></pre>
+
+				<p>The second method of counter initialization relies on jQuery and will be available if jQuery was included before jCounter.</p>
+				<div class="code-title">Same result using jQuery syntax</div>
+
+<pre><code class="language-js">$('.counter').jCounter({
+	start: 200,
+	end: 400,
+	animation: 'ease-in'
+});</code></pre>
+			</section>
+
+			<section id="counter-customization">
+				<h3>Counter customization</h3>
+
+				<p>Counters can be customized by passing object with counter parameters to initialization function. All of the parameters can be also set using data-attributes in html element. Data-attributes have higher priority than parameters in jCounter settings object. Below examples will have the same result.</p>
+				<div class="code-title">1</div>
+<pre><code class="language-html">&lt;div class="counter"&gt;&lt;/div&gt;</code></pre>
+<pre><code class="language-js">$('.counter').jCounter({
+	start: 200,
+	end: 400,
+	animation: 'ease-in'
+});</code></pre>
+				
+				<div class="code-title">2</div>
+<pre><code class="language-html">&lt;div class="counter" data-start="200" data-end="400" data-animation="ease-in"&gt;&lt;/div&gt;</code></pre>
+<pre><code class="language-js">$('.counter').jCounter();</code></pre>
+
+				<p class="warning">Write data-attribute names in lowercase. For example:<br>updatesPerSec: 10 -> data-updatespersec="10"</p>
+				<p class="warning">You can not pass functions in data-attributes.</p>
+			</section>
+
+			<section id="counter-options">
+				<h3>Counter options</h3>
+
+				<p>This is a list of all counter parameters you can use.</p>
+
+				<ul id="parameters-list">
+					<li id="parameter-start">
+						<p>
+							<span class="parameter-name">start</span> - <span class="parameter-description">starting number</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">0</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-end">
+						<p>
+							<span class="parameter-name">end</span> - <span class="parameter-description">last number</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">100</div></div>
+						</div>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">start</span> and <span class="bold">end</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Simple counter</p>
+<pre><code class="language-js">var config = {
+	start: 0,
+	end: 240
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-start="0" data-end="240"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>From a negative to a positive</p>
+<pre><code class="language-js">var config = {
+	start: -150,
+	end: 150
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-start="-150" data-end="150"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-duration">
+						<p>
+							<span class="parameter-name">duration</span> - <span class="parameter-description">how many miliseconds counting will take</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">2500</div></div>
+						</div>
+
+						<p class="warning">Real animation duration may differ when duration is not a multiple of updatesPerSec. Difference will not be grater than 1/updatesPerSec seconds.</p>
+					</li>
+
+					<li id="parameter-updatesPerSec">
+						<p>
+							<span class="parameter-name">updatesPerSec</span> - <span class="parameter-description">describes how frequently counter is being updated.</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">18</div></div>
+						</div>
+
+						<p class="warning">Values higher than 25 may cause performance drop.</p>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">duration</span> and <span class="bold">updatesPerSec</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Short duration and low update frquency</p>
+<pre><code class="language-js">var config = {
+	duration: 1500,
+	updatesPerSec: 10
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="1500" data-updatespersec="10"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Long duration and high frequency</p>
+<pre><code class="language-js">var config = {
+	duration: 6000,
+	updatesPerSec: 25
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="6000" data-updatespersec="25"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-animation">
+						<p>
+							<span class="parameter-name">animation</span> - <span class="parameter-description">function which defines the way in which starting number grows (or shrinks) to final number.</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">'linear'</div></div>
+						</div>
+
+						<p>
+							Built in animations:
+							<ul>
+								<li>'linear'</li>
+								<li>'ease-in'</li>
+								<li>'ease-out'</li>
+								<li>'ease-in-out'</li>
+							</ul>
+						</p>
+
+						<p>
+							You can define own function as animation parameter. It will be called with two arguments: 1st - progress of animation as a number between 0 and 1 (including 0 and 1), 2nd - animationPower variable (see <a href="#parameter-animationPower">animationPower</a> option).
+						</p>
+
+						<p class="warning">
+							Custom animation functions should fulfill two rules:<br>
+							f(0) = 0<br>
+							f(1) = 1<br>
+							Otherwise counter will not count from start to end parameters.
+						</p>
+
+						<p class="info">'linear' animation is perfect for creating timers or when cpu-light animation is needed.</p>
+
+						<p class="info">
+							See more about animation functions:<br>
+							<a href="http://easings.net">http://easings.net</a><br>
+							<a href="https://gist.github.com/gre/1650294#file-easing-js-L7">https://gist.github.com/gre/1650294#file-easing-js-L7</a>
+						</p>
+					</li>
+
+					<li id="parameter-animationPower">
+						<p>
+							<span class="parameter-name">animationPower</span> - <span class="parameter-description">number which is passed to animation function as a second argument. 'ease-in', 'ease-out', 'ease-in-out' animations with animationPower = 1, 2, 3 will calculate numbers using functions respectively: linear, quadratic, cubic, etc. animationPower can be also a floating point number. The higher animationPower is, the "smoother" counting will be.</span>
+						</p>
+
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">2</div></div>
+						</div>
+
+						<p class="warning">Use 'linear' animation instead of ease animations with animationPower = 1. I gives same result and consumes less computational power.</p>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">animations</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Linear animation</p>
+<pre><code class="language-js">var config = {
+	duration: 4000,
+
+	animation: 'linear'
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="4000"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Gentle ease-in-out </p>
+<pre><code class="language-js">var config = {
+	duration: 4000,
+
+	animation: 'ease-in-out',
+	animationPower: 2
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="4000" data-animation="ease-in-out" data-animationpower="2"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Slippery ease-in-out</p>
+<pre><code class="language-js">var config = {
+	duration: 4000,
+
+	animation: 'ease-in-out',
+	animationPower: 4
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="4000" data-animation="ease-in-out" data-animationpower="4"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Smooth ease-out</p>
+<pre><code class="language-js">var config = {
+	duration: 4000,
+
+	animation: 'ease-out',
+	animationPower: 3
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-duration="4000" data-animation="ease-out" data-animationpower="3"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Own "overflow" function</p>
+<pre><code class="language-js">var config = {
+	duration: 4000,
+
+	animation: function(x, power) {
+		return -1.6 * Math.pow(x, power) + 2.6 * x;
+	},
+	animationPower: 2.5
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-needed initialize" data-nr="0" data-duration="4000" data-animationpower="2.5"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-digitsOnRight">
+						<p>
+							<span class="parameter-name">digitsOnRight</span> - <span class="parameter-description">number of decimal places shown. If digitsOnRight is smaller or equal to 0 decimal places are not displayed.</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">0</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-digitsOnLeft">
+						<p>
+							<span class="parameter-name">digitsOnLeft</span> - <span class="parameter-description">number of places reserved on left side of decimal separator. It's ignored when number occupies more places than digitsOnLeft states.</span>
+						<p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">0</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-leftFiller">
+						<p>
+							<span class="parameter-name">leftFiller</span> - <span class="parameter-description">character or string which will be put in reserved places not filled by number (see <a href="#parameter-digitsOnRight">digitsOnRight</a> parameter).</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">'0'</div></div>
+						</div>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">digitsOnLeft</span>, <span class="bold">Right</span> and <span class="bold">leftFiller</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>4 reserved places, 2 decimal</p>
+<pre><code class="language-js">var config = {
+	end: 1100
+	duration: 3000,
+
+	digitsOnLeft: 4,
+	digitsOnRight: 2,
+	leftFiller: '0'
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-end="1100" data-duration="3000" data-digitsonright="2" data-digitsonleft="4" data-leftFiller="0"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Underscore filler</p>
+<pre><code class="language-js">var config = {
+	start: 1,
+	end: 12345,
+	duration: 6000,
+
+	animation: 'ease-in',
+
+	digitsOnLeft: 5,
+	digitsOnRight: 0,
+	leftFiller: '_'
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-start="1" data-end="12345" data-duration="6000" data-animation="ease-in" data-digitsonleft="5" data-digitsonright="0" data-leftfiller="_"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-decimalSeparator">
+						<p>
+							<span class="parameter-name">decimalSeparator</span> - <span class="parameter-description">character or string which will be used as decimal separator.</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">'.'</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-groupSeparator">
+						<p>
+							<span class="parameter-name">groupSeparator</span> - <span class="parameter-description">character or string which will be put every nth digit of whole number part starting from right, where n is groupWidth (see <a href="#parameter-groupWidth">groupWidth</a> option).</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">'&amp;nbsp;'</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-groupWidth">
+						<p>
+							<span class="parameter-name">groupWidth</span> - <span class="parameter-description">number of digits in groups separated by the groupSeparator (see <a href="#parameter-groupSeparator">groupSeparator</a> option).</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">3</div></div>
+						</div>
+					</li>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">separators</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>US and UK notation</p>
+<pre><code class="language-js">var config = {
+	end: 1404260,
+	duration: 8000
+
+	animation: 'ease-in',
+
+	digitsOnRight: 2,
+	digitsOnLeft: 7,
+	leftFiller: '0',
+
+	decimalSeparator: '.',
+	groupSeparator: ',',
+	groupWidth: 3
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-end="1400000" data-duration="8000" data-animation="ease-in" data-digitsOnRight="2" data-digitsonleft="7" data-leftfiller="0" data-decimalseparator="." data-groupseparator="," data-groupwidth="3" ></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>European notation</p>
+<pre><code class="language-js">var config = {
+	end: 1404260,
+	duration: 8000
+
+	animation: 'ease-in',
+
+	digitsOnRight: 2,
+	digitsOnLeft: 7,
+	leftFiller: '0',
+
+	decimalSeparator: ',',
+	groupSeparator: '&amp;nbsp;',
+	groupWidth: 3
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-end="1400000" data-duration="8000" data-animation="ease-in" data-digitsOnRight="2" data-digitsonleft="7" data-leftfiller="0" data-decimalseparator="," data-groupseparator="&nbsp;" data-groupwidth="3" ></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>Chinese grouping</p>
+<pre><code class="language-js">var config = {
+	end: 1404260,
+	duration: 8000
+
+	animation: 'ease-in',
+
+	digitsOnRight: 2,
+	digitsOnLeft: 7,
+	leftFiller: '0',
+
+	decimalSeparator: '.',
+	groupSeparator: ',',
+	groupWidth: 4
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-end="1400000" data-duration="8000" data-animation="ease-in" data-digitsOnRight="2" data-digitsonleft="7" data-leftfiller="0" data-decimalseparator="." data-groupseparator="," data-groupwidth="4" ></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-separateFillers">
+						<p>
+							<span class="parameter-name">separateFillers</span> - <span class="parameter-description">treat fillers the same way as digits - put decimal separator every third filler</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">true</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-showPlus">
+						<p>
+							<span class="parameter-name">showPlus</span> - <span class="parameter-description">show plus sign '+' in front of positive numbers</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">false</div></div>
+						</div>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">separateFillers</span> and <span class="bold">showPlus</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Do not separate fillers</p>
+<pre><code class="language-js">var config = {
+	end: 1404260,
+	duration: 8000,
+
+	animation: 'ease-in',
+
+	digitsOnLeft: 7,
+	groupSeparator: '`',
+	leftFiller: '_',
+
+	separateFillers: false
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-end="-1404260" data-duration="8000" data-animation="ease-in" data-digitsonleft="7" data-groupseparator="`" data-leftfiller="_" data-separatefillers="false"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+
+								<div class="example">
+									<div class="code">
+										<p>From -1100 to 1100 with plus sign</p>
+<pre><code class="language-js">var config = {
+	start: -1100,
+	end: 1100,
+	duration: 8000,
+
+	showPlus: true
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-less initialize" data-start="-1100" data-end="1100" data-duration="8000" data-showplus="true"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-onStart">
+						<p>
+							<span class="parameter-name">onStart</span> - <span class="parameter-description">function, which will be executed right before start of a counter.</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">undefined</div></div>
+						</div>
+					</li>
+
+					<li id="parameter-onEnd">
+						<p>
+							<span class="parameter-name">onEnd</span> - <span class="parameter-description">function, which will be executed right after the end of counting.</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">undefined</div></div>
+						</div>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">onStart</span> and <span class="bold">onEnd</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Change some css</p>
+<pre><code class="language-js">var config = {
+	onStart: function(element) {
+		//classic javascript styling
+		element.style.color = '#ffbe00';
+		element.style.fontWeight = 'bold';
+	},
+
+	onEnd: function(element) {
+		//jQuery styling
+		$(element).css({
+			'text-shadow': '2px 2px 5px #ffbe00',
+			'text-decoration': 'underline'
+		});
+	}
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter js-needed initialize" data-nr="1"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="parameter-initializeOnly">
+						<p>
+							<span class="parameter-name">initializeOnly</span> - <span class="parameter-description">do not start counting, just fill element with starting value.</span>
+						</p>
+						<div class="default-row">
+							<div class="default">Default:<div class="default-value">false</div></div>
+						</div>
+
+						<p class="info">All examples on this page except for one below were initialized on pageload with "initializeOnly: true", so that you can see how do they look like before start of counting.</p>
+
+						<div class="examples-box">
+							<div class="examples-button"><span class="bold">initializeOnly</span> example</div>
+							<div class="examples">
+								<div class="example">
+									<div class="code">
+										<p>Click start to initialize counter</p>
+<pre><code class="language-js">var config = {
+	initializeOnly: true
+};</code></pre>
+									</div>
+
+									<div class="preview">
+										<div class="counter" data-initializeonly="true"></div>
+										<div class="start-counter">Start</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
+
+			<section id="counter-html-elements">
+				<h3>Counter HTML elements</h3>
+
+				<p>Each element of a counter (digit, separator) is enclosed in separate HTML element.</p>
+				<span class="code-title">Example counter element with jCounter</span>
+
+<pre><code class="language-html">&lt;div class="counter"&gt;
+	&lt;span class="jc-pp3"&gt;9&lt;/span&gt;
+	&lt;span class="jc-gs"&gt;`&lt;/span&gt;
+	&lt;span class="jc-pp2"&gt;9&lt;/span&gt;
+	&lt;span class="jc-pp1"&gt;9&lt;/span&gt;
+	&lt;span class="jc-pp0"&gt;9&lt;/span&gt;
+	&lt;span class="jc-ds"&gt;.&lt;/span&gt;
+	&lt;span class="jc-pm1"&gt;9&lt;/span&gt;
+	&lt;span class="jc-pm2"&gt;9&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+				<p>Below table explains which classes are given to all counter elements</p>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Counter element</th>
+							<th>Class name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>digit<sup>positive power</sup></td>
+							<td>jc-pp<sup>power</sup></td>
+						</tr>
+
+						<tr>
+							<td>digit<sup>negative power</sup></td>
+							<td>jc-pm<sup>power</sup></td>
+						</tr>
+
+						<tr>
+							<td>sign +</td>
+							<td>jc-sp</td>
+						</tr>
+
+						<tr>
+							<td>sign -</td>
+							<td>jc-sm</td>
+						</tr>
+
+						<tr>
+							<td>decimal separator</td>
+							<td>jc-ds</td>
+						</tr>
+
+						<tr>
+							<td>group separator</td>
+							<td>jc-gs</td>
+						</tr>
+
+						<tr>
+							<td>left filler</td>
+							<td>jc-lf</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p class="warning">First digit on the left of decimal separator has class name "jc-pp0". Next one on the left will have class "jc-pp1", next one "jc-pp2" and so on. First digit on the right of decimal separator has class name "jc-pm1", next on the right "jc-pm2", next "jc-pm3" and so on. If we sum (digit * 10<sup>digit's power</sup>) for all of the digits we would get a value of the displayed number.<br>
+				</p>
+
+				<p>Because every counter's element has own class name you can style a counter in any way you can imagine.</p>
+
+				<div class="counter initialize styled-counter" data-start="5137209.04" data-digitsonright="2" data-groupseparator="'"></div>
+			</section>
+
+			<section id="ending-info">
+				<h3>Some final words</h3>
+
+				<p>jCounter as well as this page is released under the <a href="https://en.wikipedia.org/wiki/MIT_License"><span class="bold">MIT</span></a> license.<br>I hope you will find this demo/documentation useful and enjoy using jCounter.</p>
+
+				<p>These are the tools which I have used for creating this webpage.</p>
+
+				<a href="https://jquery.com/"><img src="https://jquery.com/jquery-wp-content/themes/jquery/images/logo-jquery.png" alt="jquery"></a>
+				<a href="http://getbootstrap.com/"><img src="https://worldvectorlogo.com/logos/bootstrap-4.svg" alt="bootstrap"></a>
+				<a href="http://prismjs.com/"><img src="http://prismjs.com/logo.svg"></a>
+			</section>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,202 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400; }
+
+section {
+  margin-top: 60px;
+  border-top: 1px solid #ccc; }
+  section:last-child {
+    margin-bottom: 60px; }
+
+img {
+  margin: 20px 30px 20px 0;
+  height: 66px;
+  -webkit-filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5)); }
+
+.bold {
+  font-weight: 500; }
+
+p.warning {
+  position: relative;
+  padding: 1em 2em;
+  background-color: #fffbda;
+  color: #694619; }
+  p.warning:before {
+    content: '!';
+    display: inline-block;
+    position: absolute;
+    top: 0.15em;
+    left: 0.5em;
+    color: #ffcf00;
+    font-size: 2em;
+    font-weight: 500; }
+
+p.info {
+  position: relative;
+  padding: 1em 2em;
+  background-color: #d5ffb3;
+  color: #326919; }
+  p.info:before {
+    content: '?';
+    display: inline-block;
+    position: absolute;
+    top: 0.15em;
+    left: 0.5em;
+    color: #326919;
+    font-size: 2em;
+    font-weight: 500; }
+
+.code-title {
+  padding-left: 20px;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.3; }
+
+pre[class*="language-"] {
+  margin: 0.3em 0 2em 0;
+  padding: 0.6em 1em; }
+
+pre[class*="language-"] + pre[class*="language-"] {
+  margin-top: -1.6em; }
+
+pre code {
+  font-family: 'Droid Sans Mono', monospace !important;
+  font-size: 16px; }
+
+#parameters-list li {
+  margin-top: 20px; }
+  #parameters-list li li {
+    margin-top: auto; }
+  #parameters-list li p + .default-row {
+    margin-top: -5px;
+    margin-bottom: 10px; }
+  #parameters-list li p.warning,
+  #parameters-list li p.info {
+    padding: 0.5em 2em; }
+    #parameters-list li p.warning:before,
+    #parameters-list li p.info:before {
+      top: 0.1em;
+      font-size: 1.5em; }
+
+.parameter-name {
+  font-weight: 500;
+  font-size: 18px; }
+  .parameter-name:hover {
+    text-decoration: underline; }
+
+.default-row {
+  position: relative;
+  height: 1.4em;
+  text-align: right; }
+  .default-row:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.7em;
+    width: 100%;
+    border-top: 1px solid #ccc; }
+  .default-row .default {
+    position: absolute;
+    right: 0;
+    padding-left: 10px;
+    background-color: white; }
+  .default-row .default-value {
+    display: inline-block;
+    margin-left: 16px;
+    width: 7em;
+    font-family: 'Droid Sans Mono', monospace;
+    text-align: left; }
+
+table {
+  margin-top: 30px;
+  margin-bottom: 20px; }
+
+th,
+td {
+  padding: 10px 30px;
+  font-size: 18px; }
+
+td {
+  border-top: 1px solid #ccc; }
+
+sup {
+  color: #d02b2b; }
+
+.examples-box {
+  font-size: 0;
+  text-align: center; }
+
+.examples-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #41B7F8;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; }
+  .examples-button.clicked {
+    background-color: #A1A1A1; }
+    .examples-button.clicked + .examples {
+      display: block; }
+
+.examples {
+  display: none;
+  font-size: 16px;
+  text-align: left; }
+
+.example {
+  padding: 20px 0 10px 0;
+  border-bottom: solid 1px #ccc; }
+  .example:after {
+    content: '';
+    display: block;
+    clear: both; }
+  .example .code {
+    float: left;
+    margin-right: 6%;
+    text-align: left;
+    width: 47%; }
+  .example .preview {
+    float: left;
+    width: 47%;
+    text-align: center; }
+  .example .counter {
+    margin: 34px 0 10px;
+    font-size: 40px;
+    font-weight: 300;
+    border: solid 1px #ccc; }
+  .example .start-counter {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #ffca10;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s; }
+
+.styled-counter {
+  margin: 10px 0;
+  font-size: 80px;
+  font-weight: 400; }
+  .styled-counter .jc-gs {
+    color: #ffc600;
+    font-weight: 700; }
+  .styled-counter .jc-ds {
+    color: #ff5600;
+    font-weight: 700; }
+  .styled-counter .jc-pp6 {
+    color: #000; }
+  .styled-counter .jc-pp5,
+  .styled-counter .jc-pp4,
+  .styled-counter .jc-pp3 {
+    color: #555; }
+  .styled-counter .jc-pp2,
+  .styled-counter .jc-pp1,
+  .styled-counter .jc-pp0 {
+    color: #888; }
+  .styled-counter [class*="jc-pm"] {
+    color: #aaa; }
